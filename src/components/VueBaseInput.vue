@@ -1,13 +1,13 @@
 <template>
-  <vue-base-input />
+  <div class="vb-input"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import VueBaseInput from './components/VueBaseInput.vue';
 
 export default defineComponent({
-  name: 'App',
-  components: { VueBaseInput },
+  name: 'VueBaseInput',
 });
 </script>
+
+<style scoped lang="scss"></style>
