@@ -1,6 +1,7 @@
 <template>
-  <vue-base-input type="text" placeholder="name" label="your name" />
-  <vue-base-input type="textarea" placeholder="name" label="your name" />
+  <vue-base-input autofocuse type="text" placeholder="name" label="your name" />
+  <vue-base-input type="password" placeholder="password" label="your password" />
+  <vue-base-input type="textarea" placeholder="message" label="your message" />
 </template>
 
 <script lang="ts">

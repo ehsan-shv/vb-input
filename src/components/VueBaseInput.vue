@@ -2,26 +2,20 @@
   <div class="vb-input" :style="blockStyle" :class="{ rtl: rtl, error: error }">
     <label :style="labelStyle" class="vb-input__label" v-if="label" :class="{ inline: labelInline }">{{ label }}</label>
     <textarea
-      v-if="type === 'textarea'"
-      :type="type"
+      v-if="$attrs.type === 'textarea'"
+      class="vb-input__field"
+      @input="$emit('update:modelValue', $event.target.value)"
       v-bind="$attrs"
       :value="modelValue"
-      :placeholder="placeholder"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="vb-input__field"
       :style="fieldStyle"
-      :disabled="disabled"
     />
     <input
       v-else
-      :type="type"
+      class="vb-input__field"
       v-bind="$attrs"
       :value="modelValue"
-      :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="vb-input__field"
       :style="fieldStyle"
-      :disabled="disabled"
     />
     <p v-if="error" class="vb-input__errorMessage" :style="errorMessageStyle">{{ error }}</p>
   </div>
@@ -33,18 +27,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'VueBaseInput',
   props: {
-    type: {
-      type: String,
-      required: true,
-      validator: (value: string) => {
-        return ['text', 'number', 'email', 'text', 'password', 'search', 'tel', 'textarea'].includes(value);
-      },
-    },
     label: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
       type: String,
       default: '',
     },
@@ -61,10 +44,6 @@ export default defineComponent({
       default: false,
     },
     labelInline: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
       type: Boolean,
       default: false,
     },
