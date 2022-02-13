@@ -1,5 +1,5 @@
 <template>
-  <vue-base-input />
+  <vue-base-input type="text" placeholder="name" label="your name" />
 </template>
 
 <script lang="ts">
@@ -11,3 +11,9 @@ export default defineComponent({
   components: { VueBaseInput },
 });
 </script>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+</style>
