@@ -1,7 +1,19 @@
 <template>
   <div class="vb-input" :style="blockStyle" :class="{ rtl: rtl, error: error }">
     <label :style="labelStyle" class="vb-input__label" v-if="label" :class="{ inline: labelInline }">{{ label }}</label>
+    <textarea
+      v-if="type === 'textarea'"
+      :type="type"
+      v-bind="$attrs"
+      :value="modelValue"
+      :placeholder="placeholder"
+      @input="$emit('update:modelValue', $event.target.value)"
+      class="vb-input__field"
+      :style="fieldStyle"
+      :disabled="disabled"
+    />
     <input
+      v-else
       :type="type"
       v-bind="$attrs"
       :value="modelValue"
@@ -25,7 +37,7 @@ export default defineComponent({
       type: String,
       required: true,
       validator: (value: string) => {
-        return ['text', 'number', 'email', 'text', 'password', 'search', 'tel'].includes(value);
+        return ['text', 'number', 'email', 'text', 'password', 'search', 'tel', 'textarea'].includes(value);
       },
     },
     label: {
@@ -92,6 +104,7 @@ export default defineComponent({
   --vb-input-placeholder-color: #757575;
   --vb-input-font-size: 16px;
   --vb-input-field-border-radius: 4px;
+  --vb-input-textarea-height: 80px;
 }
 .vb-input {
   color: var(--vb-input-color-default);
@@ -121,6 +134,10 @@ export default defineComponent({
   }
 
   &__field {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
     height: 36px;
     width: 100%;
     display: flex;
@@ -132,12 +149,20 @@ export default defineComponent({
     &::placeholder {
       color: var(--vb-input-placeholder-color);
     }
+
     &:disabled {
       opacity: 0.5;
     }
+
     &:focus {
       outline: none;
       border-color: var(--vb-input-color-default);
+    }
+
+    &[type='textarea'] {
+      height: var(--vb-input-textarea-height);
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
   }
 

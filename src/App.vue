@@ -1,5 +1,6 @@
 <template>
   <vue-base-input type="text" placeholder="name" label="your name" />
+  <vue-base-input type="textarea" placeholder="name" label="your name" />
 </template>
 
 <script lang="ts">
