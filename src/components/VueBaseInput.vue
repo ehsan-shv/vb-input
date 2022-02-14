@@ -103,7 +103,7 @@ export default defineComponent({
       default: '',
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { attrs, emit }) {
     const showPassword = ref(false);
     const passedAttrs = ref(attrs);
 
@@ -119,6 +119,8 @@ export default defineComponent({
       if (props.type === 'password') {
         showPassword.value = !showPassword.value;
         return;
+      } else {
+        emit('onInputButtonClick');
       }
     };
 

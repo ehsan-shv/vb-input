@@ -1,5 +1,13 @@
 <template>
-  <vue-base-input buttonText="Send" autofocus :type="'text'" placeholder="name" label="your name" />
+  <vue-base-input
+    @onInputButtonClick="onInputButtonClick"
+    buttonText="Send"
+    autofocus
+    :type="'text'"
+    placeholder="name"
+    label="your name"
+    v-model="name"
+  />
   <vue-base-input autofocus :type="'number'" placeholder="number" label="your number" />
   <vue-base-input v-model="password" maxlength="4" :type="'password'" placeholder="password" label="your password" />
   <vue-base-input :type="'textarea'" placeholder="message" label="your message" />
@@ -14,8 +22,13 @@ export default defineComponent({
   components: { VueBaseInput },
   setup() {
     const password = ref('');
+    const name = ref('');
 
-    return { password };
+    const onInputButtonClick = () => {
+      console.log(name.value);
+    };
+
+    return { password, onInputButtonClick, name };
   },
 });
 </script>
