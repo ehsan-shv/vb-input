@@ -4,9 +4,8 @@
       label
     }}</label>
     <textarea
-      v-if="type === 'textarea'"
+      v-if="!type"
       class="vb-input__field"
-      :type="setType"
       @input="$emit('update:modelValue', $event.target.value)"
       v-bind="passedAttrs"
       :value="modelValue"
@@ -51,9 +50,9 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      required: true,
+      default: '',
       validator: (value: string) => {
-        return ['text', 'number', 'email', 'text', 'password', 'search', 'tel', 'textarea'].includes(value);
+        return ['text', 'number', 'email', 'password', 'search', 'tel', 'textarea', ''].includes(value);
       },
     },
     id: {
