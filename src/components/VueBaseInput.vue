@@ -165,10 +165,6 @@ export default defineComponent({
 .vb-input {
   color: var(--vb-input-color-default);
 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 300px;
-  margin: 100px;
-
   &.error {
     color: var(--vb-input-color-error);
 
