@@ -6,7 +6,7 @@
       class="vb-input__field"
       :type="setFieldType"
       @input="$emit('update:modelValue', $event.target.value)"
-      v-bind="$attrs"
+      v-bind="passedAttrs"
       :value="modelValue"
       :style="fieldStyle"
     />
@@ -15,7 +15,7 @@
         class="vb-input__field"
         :type="setFieldType"
         @input="$emit('update:modelValue', $event.target.value)"
-        v-bind="$attrs"
+        v-bind="passedAttrs"
         :value="modelValue"
         :style="fieldStyle"
       />
@@ -44,6 +44,9 @@ export default defineComponent({
     type: {
       type: String,
       required: true,
+      validator: (value: string) => {
+        return ['text', 'number', 'email', 'text', 'password', 'search', 'tel', 'textarea'].includes(value);
+      },
     },
     label: {
       type: String,
@@ -100,8 +103,9 @@ export default defineComponent({
       default: '',
     },
   },
-  setup(props) {
+  setup(props, { attrs }) {
     const showPassword = ref(false);
+    const passedAttrs = ref(attrs);
 
     const setFieldType = computed(() => {
       if (props.type === 'password') {
@@ -122,6 +126,7 @@ export default defineComponent({
       onButtonClick,
       showPassword,
       setFieldType,
+      passedAttrs,
     };
   },
 });
