@@ -7,10 +7,20 @@
     placeholder="name"
     label="your name"
     v-model="name"
+    :hasButton="true"
   />
   <vue-base-input autofocus :type="'number'" placeholder="number" label="your number" />
-  <vue-base-input v-model="password" maxlength="4" :type="'password'" placeholder="password" label="your password" />
+  <vue-base-input
+    :hasButton="true"
+    :rtl="true"
+    v-model="password"
+    maxlength="4"
+    :type="'password'"
+    placeholder="پسورد"
+    label="پسورد"
+  />
   <vue-base-input :type="'textarea'" placeholder="message" label="your message" />
+  <vue-base-input :hasButton="true" :type="'search'" placeholder="search" label="your search" />
 </template>
 
 <script lang="ts">
