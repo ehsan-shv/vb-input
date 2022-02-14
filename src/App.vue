@@ -18,6 +18,7 @@
     :type="'password'"
     placeholder="پسورد"
     label="پسورد"
+    id="ps"
   />
   <vue-base-input :type="'textarea'" placeholder="message" label="your message" />
   <vue-base-input :hasButton="true" :type="'search'" placeholder="search" label="your search" />

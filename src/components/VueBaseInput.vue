@@ -1,6 +1,8 @@
 <template>
   <div class="vb-input" :style="blockStyle" :class="{ rtl, error }">
-    <label :style="labelStyle" class="vb-input__label" v-if="label" :class="{ inline: labelInline }">{{ label }}</label>
+    <label :for="id" :style="labelStyle" class="vb-input__label" v-if="label" :class="{ inline: labelInline }">{{
+      label
+    }}</label>
     <textarea
       v-if="type === 'textarea'"
       class="vb-input__field"
@@ -9,6 +11,7 @@
       v-bind="passedAttrs"
       :value="modelValue"
       :style="fieldStyle"
+      :id="id"
     />
     <div v-else class="vb-input__block">
       <input
@@ -18,6 +21,7 @@
         v-bind="passedAttrs"
         :value="modelValue"
         :style="fieldStyle"
+        :id="id"
       />
       <button
         v-if="hasButton"
@@ -51,6 +55,10 @@ export default defineComponent({
       validator: (value: string) => {
         return ['text', 'number', 'email', 'text', 'password', 'search', 'tel', 'textarea'].includes(value);
       },
+    },
+    id: {
+      type: String,
+      default: '',
     },
     label: {
       type: String,
