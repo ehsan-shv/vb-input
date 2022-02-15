@@ -123,6 +123,32 @@ describe('show, hide password', () => {
   });
 });
 
+describe('error message', () => {
+  it('does not show any error by default', async () => {
+    const wrapper = mount(VueBaseInput, {
+      props: {
+        type: 'text',
+      },
+    });
+    const errorMessage = wrapper.find('.vb-input__errorMessage');
+
+    expect(errorMessage.exists()).not.toBe(true);
+  });
+
+  it('show error prop value as error message', async () => {
+    const wrapper = mount(VueBaseInput, {
+      props: {
+        type: 'text',
+        error: 'Not Valid',
+      },
+    });
+    const errorMessage = wrapper.find('.vb-input__errorMessage');
+
+    expect(errorMessage.exists()).toBe(true);
+    expect(errorMessage.text()).toBe('Not Valid');
+  });
+});
+
 // describe('emmit', () => {
 //   it('will emit when button clicks', async () => {
 //     const wrapper = mount(VueBaseInput, {
