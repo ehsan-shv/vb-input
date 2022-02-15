@@ -6,16 +6,6 @@
     label="your name"
     v-model="name"
     :hasButton="true"
-    :rtl="true"
-    :error="'error'"
-  />
-  <vue-base-input
-    @onInputButtonClick="onInputButtonClick"
-    buttonText="Send"
-    :type="'text'"
-    placeholder="name"
-    label="your name"
-    :hasButton="true"
   />
 </template>
 
