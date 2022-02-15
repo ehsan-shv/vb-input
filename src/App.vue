@@ -1,34 +1,22 @@
 <template>
   <vue-base-input
     @onInputButtonClick="onInputButtonClick"
-    buttonText="Send"
-    :type="'text'"
-    placeholder="'name'"
-    label="your name"
-    v-model="name"
-    :hasButton="true"
-  />
-  <vue-base-input
-    @onInputButtonClick="onInputButtonClick"
-    :type="'text'"
+    :type="'password'"
     placeholder="name"
     label="your name"
     v-model="name"
     :hasButton="true"
-  />
-  <vue-base-input :type="'number'" placeholder="number" label="your number" />
-  <vue-base-input
-    :hasButton="true"
     :rtl="true"
-    v-model="password"
-    maxlength="4"
-    :type="'password'"
-    placeholder="پسورد"
-    label="پسورد"
-    id="ps"
+    :error="'error'"
   />
-  <vue-base-input :type="'textarea'" placeholder="message" label="your message" />
-  <vue-base-input :hasButton="true" :type="'search'" placeholder="search" label="your search" />
+  <vue-base-input
+    @onInputButtonClick="onInputButtonClick"
+    buttonText="Send"
+    :type="'text'"
+    placeholder="name"
+    label="your name"
+    :hasButton="true"
+  />
 </template>
 
 <script lang="ts">
@@ -39,17 +27,17 @@ export default defineComponent({
   name: 'App',
   components: { VueBaseInput },
   setup() {
-    const password = ref('');
     const name = ref('');
 
     const onInputButtonClick = () => {
       console.log(name.value);
     };
 
-    return { password, onInputButtonClick, name };
+    return { onInputButtonClick, name };
   },
 });
 </script>
+
 <style lang="scss">
 * {
   margin: 0;
