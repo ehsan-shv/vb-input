@@ -1,6 +1,6 @@
 {
   "name": "vb-input",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue reuseable input component.",
   "main": "dist/vb-input.ssr.js",
   "browser": "dist/vb-input.esm.js",
