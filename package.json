@@ -1,7 +1,7 @@
 {
-  "name": "vue-base-input",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vb-input",
+  "version": "0.0.1",
+  "description": "Vue reuseable input component.",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
