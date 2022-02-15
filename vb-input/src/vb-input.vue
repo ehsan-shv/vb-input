@@ -148,17 +148,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-:root {
-  --vb-input-color-default: #212121;
-  --vb-input-color-secondary: #9e9e9e;
-  --vb-input-color-error: #f44336;
-  --vb-input-placeholder-color: #757575;
-  --vb-input-font-size: 16px;
-  --vb-input-field-border-radius: 4px;
-  --vb-input-height: 40px;
-  --vb-input-textarea-height: 80px;
-  --vb-input-button-width: 64px;
-}
+// :root {
+//   --vb-input-color-default: #212121;
+//   --vb-input-color-secondary: #9e9e9e;
+//   --vb-input-color-error: #f44336;
+//   --vb-input-placeholder-color: #757575;
+//   --vb-input-font-size: 16px;
+//   --vb-input-field-border-radius: 4px;
+//   --vb-input-height: 40px;
+//   --vb-input-textarea-height: 80px;
+//   --vb-input-button-width: 64px;
+// }
 
 .vb-input {
   &__label {
