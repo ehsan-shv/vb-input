@@ -90,16 +90,21 @@ describe('button', () => {
 describe('direction', () => {
   it('is ltr by default', () => {
     const wrapper = mount(VueBaseInput, {
-      type: 'text',
+      props: {
+        type: 'text',
+      },
     });
-    expect(wrapper.classes('input')).not.toContain('rtl');
+    expect(wrapper.find('input').classes('input')).not.toContain('rtl');
   });
 
   it('is rtl if rtl prop is true', () => {
     const wrapper = mount(VueBaseInput, {
-      type: 'text',
+      props: {
+        type: 'text',
+        rtl: true,
+      },
     });
-    expect(wrapper.classes('input')).toContain('rtl');
+    expect(wrapper.find('input').classes()).toContain('rtl');
   });
 });
 
