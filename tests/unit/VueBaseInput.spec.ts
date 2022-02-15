@@ -42,8 +42,10 @@ describe('type prop', () => {
     expect(input.element.type).toBe('search');
   });
 
-  it('textarea should render if there is no type prop', () => {
-    const wrapper = mount(VueBaseInput);
+  it('textarea should render ', () => {
+    const wrapper = mount(VueBaseInput, {
+      props: { type: 'textarea' },
+    });
     expect(wrapper.find('textarea').exists()).toBe(true);
   });
 });
@@ -87,17 +89,17 @@ describe('button', () => {
 
 describe('direction', () => {
   it('is ltr by default', () => {
-    const wrapper = mount(VueBaseInput);
-    expect(wrapper.classes()).not.toContain('rtl');
+    const wrapper = mount(VueBaseInput, {
+      type: 'text',
+    });
+    expect(wrapper.classes('input')).not.toContain('rtl');
   });
 
   it('is rtl if rtl prop is true', () => {
     const wrapper = mount(VueBaseInput, {
-      props: {
-        rtl: true,
-      },
+      type: 'text',
     });
-    expect(wrapper.classes()).toContain('rtl');
+    expect(wrapper.classes('input')).toContain('rtl');
   });
 });
 
