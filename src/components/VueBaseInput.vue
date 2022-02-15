@@ -1,13 +1,13 @@
 <template>
   <div class="vb-input" :style="blockStyle" :class="{ rtl, error }">
-    <label :for="id" :style="labelStyle" class="vb-input__label" v-if="label" :class="{ inline: labelInline }">{{
-      label
-    }}</label>
+    <label :for="id" :style="labelStyle" class="vb-input__label" v-if="label" :class="{ inline: labelInline }">
+      {{ label }}
+    </label>
     <textarea
-      v-if="!type"
+      v-if="type === 'textarea'"
       class="vb-input__field"
       @input="$emit('update:modelValue', $event.target.value)"
-      v-bind="passedAttrs"
+      v-bind="$attrs"
       :value="modelValue"
       :style="fieldStyle"
       :id="id"
@@ -17,7 +17,7 @@
         class="vb-input__field"
         :type="setType"
         @input="$emit('update:modelValue', $event.target.value)"
-        v-bind="passedAttrs"
+        v-bind="$attrs"
         :value="modelValue"
         :style="fieldStyle"
         :id="id"
@@ -32,8 +32,8 @@
       >
         <span
           class="vb-input__icon"
-          v-if="setType === 'password' || setType === 'search'"
-          :class="{ password: setType === 'password', showPassword, search: setType === 'search' }"
+          v-if="type === 'password' || type === 'search'"
+          :class="{ password: type === 'password', search: type === 'search', showPassword }"
         />
         <span v-if="hasButton && buttonText">{{ buttonText }}</span>
       </button>
@@ -52,7 +52,7 @@ export default defineComponent({
       type: String,
       default: '',
       validator: (value: string) => {
-        return ['text', 'number', 'email', 'password', 'search', 'tel', 'textarea', ''].includes(value);
+        return ['text', 'number', 'email', 'password', 'search', 'tel', 'textarea'].includes(value);
       },
     },
     id: {
@@ -118,9 +118,8 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     const showPassword = ref(false);
-    const passedAttrs = ref(attrs);
 
     const setType = computed(() => {
       if (props.type === 'password') {
@@ -143,7 +142,6 @@ export default defineComponent({
       onButtonClick,
       showPassword,
       setType,
-      passedAttrs,
     };
   },
 });

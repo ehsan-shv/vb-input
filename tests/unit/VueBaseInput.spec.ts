@@ -86,12 +86,12 @@ describe('button', () => {
 });
 
 describe('direction', () => {
-  it('by default is ltr', () => {
+  it('is ltr by default', () => {
     const wrapper = mount(VueBaseInput);
     expect(wrapper.classes()).not.toContain('rtl');
   });
 
-  it('is rtl if rtl prop is tre', () => {
+  it('is rtl if rtl prop is true', () => {
     const wrapper = mount(VueBaseInput, {
       props: {
         rtl: true,
@@ -100,3 +100,39 @@ describe('direction', () => {
     expect(wrapper.classes()).toContain('rtl');
   });
 });
+
+describe('show, hide password', () => {
+  it('hide password by default and show after button click', async () => {
+    const wrapper = mount(VueBaseInput, {
+      props: {
+        type: 'password',
+        hasButton: true,
+      },
+    });
+    const button = wrapper.find('button');
+    const icon = wrapper.find('button span');
+
+    expect(wrapper.vm.showPassword).toBe(false);
+
+    await button.trigger('click');
+
+    expect(wrapper.vm.showPassword).toBe(true);
+    expect(icon.classes('showPassword')).toBe(true);
+  });
+});
+
+// describe('emmit', () => {
+//   it('will emit when button clicks', async () => {
+//     const wrapper = mount(VueBaseInput, {
+//       props: {
+//         type: 'text',
+//         hasButton: true,
+//         buttonText: 'Send',
+//       },
+//     });
+//     const button = wrapper.find('button');
+
+//     await button.trigger('click');
+//     wrapper.vm.onButtonClick();
+//   });
+// });

@@ -2,23 +2,21 @@
   <vue-base-input
     @onInputButtonClick="onInputButtonClick"
     buttonText="Send"
-    autofocus
     :type="'text'"
-    placeholder="name"
+    placeholder="'name'"
     label="your name"
     v-model="name"
     :hasButton="true"
   />
   <vue-base-input
     @onInputButtonClick="onInputButtonClick"
-    autofocus
     :type="'text'"
     placeholder="name"
     label="your name"
     v-model="name"
     :hasButton="true"
   />
-  <vue-base-input autofocus :type="'number'" placeholder="number" label="your number" />
+  <vue-base-input :type="'number'" placeholder="number" label="your number" />
   <vue-base-input
     :hasButton="true"
     :rtl="true"
