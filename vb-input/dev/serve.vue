@@ -5,13 +5,13 @@ import VbInput from '@/vb-input.vue';
 export default defineComponent({
   name: 'ServeDev',
   components: {
-    VbInput
-  }
+    VbInput,
+  },
 });
 </script>
 
 <template>
   <div id="app">
-    <vb-input />
+    <vb-input :label="'your name'" placeholder="name" />
   </div>
 </template>
