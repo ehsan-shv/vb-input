@@ -154,7 +154,7 @@ describe('error message', () => {
   });
 });
 
-describe('emmit', () => {
+describe('emit', () => {
   it('will emit when button clicks', async () => {
     const wrapper = mount(VueBaseInput, {
       props: {
@@ -166,6 +166,6 @@ describe('emmit', () => {
     const button = wrapper.find('button');
 
     await button.trigger('click');
-    wrapper.vm.onButtonClick();
+    expect(wrapper.emitted().onInputButtonClick).toHaveLength(1);
   });
 });
