@@ -1,51 +1,53 @@
 <template>
-  <label
-    :for="id"
-    :style="labelStyle"
-    class="vb-input__label"
-    v-if="label"
-    :class="{ inline: labelInline, rtl, error }"
-  >
-    {{ label }}
-  </label>
-  <textarea
-    v-if="type === 'textarea'"
-    class="vb-input__field"
-    :class="{ rtl, error }"
-    @input="$emit('update:modelValue', $event.target.value)"
-    v-bind="$attrs"
-    :value="modelValue"
-    :style="fieldStyle"
-    :id="id"
-  />
-  <div v-else class="vb-input__block">
-    <input
+  <div class="vb-input" :style="blockStyle" :class="{ rtl, error }">
+    <label
+      :for="id"
+      :style="labelStyle"
+      class="vb-input__label"
+      v-if="label"
+      :class="{ inline: labelInline, rtl, error }"
+    >
+      {{ label }}
+    </label>
+    <textarea
+      v-if="type === 'textarea'"
       class="vb-input__field"
-      :class="{ rtl, error }"
-      :type="setType"
+      :class="{ error }"
       @input="$emit('update:modelValue', $event.target.value)"
       v-bind="$attrs"
       :value="modelValue"
       :style="fieldStyle"
       :id="id"
     />
-    <button
-      v-if="hasButton"
-      class="vb-input__btn"
-      type="button"
-      :class="{ rtl, error }"
-      :style="buttonStyle"
-      @click="onButtonClick"
-    >
-      <span
-        class="vb-input__icon"
-        v-if="type === 'password' || type === 'search'"
-        :class="{ password: type === 'password', search: type === 'search', showPassword }"
+    <div v-else class="vb-input__block">
+      <input
+        class="vb-input__field"
+        :class="{ error }"
+        :type="setType"
+        @input="$emit('update:modelValue', $event.target.value)"
+        v-bind="$attrs"
+        :value="modelValue"
+        :style="fieldStyle"
+        :id="id"
       />
-      <span v-if="hasButton && buttonText">{{ buttonText }}</span>
-    </button>
+      <button
+        v-if="hasButton"
+        class="vb-input__btn"
+        type="button"
+        :class="{ rtl, error }"
+        :style="buttonStyle"
+        @click="onButtonClick"
+      >
+        <span
+          class="vb-input__icon"
+          v-if="type === 'password' || type === 'search'"
+          :class="{ password: type === 'password', search: type === 'search', showPassword }"
+        />
+        <span v-if="hasButton && buttonText">{{ buttonText }}</span>
+      </button>
+    </div>
+    <p v-if="error" class="vb-input__errorMessage" :style="errorMessageStyle">{{ error }}</p>
   </div>
-  <p v-if="error" class="vb-input__errorMessage" :class="{ rtl }" :style="errorMessageStyle">{{ error }}</p>
 </template>
 
 <script lang="ts">
@@ -53,6 +55,7 @@ import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'VueBaseInput',
+  inheritAttrs: false,
   props: {
     type: {
       type: String,
@@ -84,6 +87,12 @@ export default defineComponent({
     labelInline: {
       type: Boolean,
       default: false,
+    },
+    blockStyle: {
+      type: Object,
+      default: () => {
+        return {};
+      },
     },
     fieldStyle: {
       type: Object,
@@ -161,6 +170,21 @@ export default defineComponent({
 }
 
 .vb-input {
+  color: var(--vb-input-color-default);
+
+  &.error {
+    color: var(--vb-input-color-error);
+
+    .vb-input__field {
+      border-color: var(--vb-input-color-error);
+    }
+  }
+
+  &.rtl {
+    direction: rtl;
+    text-align: right;
+  }
+
   &__label {
     display: block;
 
@@ -203,28 +227,11 @@ export default defineComponent({
       padding-top: 8px;
       padding-bottom: 8px;
     }
-
-    &.error {
-      border-color: var(--vb-input-color-error);
-    }
-  }
-
-  &__field,
-  &__errorMessage,
-  &__label,
-  &__btn {
-    &.rtl {
-      direction: rtl;
-      text-align: right;
-    }
   }
 
   &__field,
   &__label {
     color: var(--vb-input-color-default);
-    &.error {
-      color: var(--vb-input-color-error);
-    }
   }
 
   &__field,

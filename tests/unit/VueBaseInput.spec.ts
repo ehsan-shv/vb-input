@@ -94,7 +94,7 @@ describe('direction', () => {
         type: 'text',
       },
     });
-    expect(wrapper.find('input').classes('input')).not.toContain('rtl');
+    expect(wrapper.classes()).not.toContain('rtl');
   });
 
   it('is rtl if rtl prop is true', () => {
@@ -104,7 +104,7 @@ describe('direction', () => {
         rtl: true,
       },
     });
-    expect(wrapper.find('input').classes()).toContain('rtl');
+    expect(wrapper.classes()).toContain('rtl');
   });
 });
 
@@ -154,18 +154,18 @@ describe('error message', () => {
   });
 });
 
-// describe('emmit', () => {
-//   it('will emit when button clicks', async () => {
-//     const wrapper = mount(VueBaseInput, {
-//       props: {
-//         type: 'text',
-//         hasButton: true,
-//         buttonText: 'Send',
-//       },
-//     });
-//     const button = wrapper.find('button');
+describe('emit', () => {
+  it('will emit when button clicks', async () => {
+    const wrapper = mount(VueBaseInput, {
+      props: {
+        type: 'text',
+        hasButton: true,
+        buttonText: 'Send',
+      },
+    });
+    const button = wrapper.find('button');
 
-//     await button.trigger('click');
-//     wrapper.vm.onButtonClick();
-//   });
-// });
+    await button.trigger('click');
+    expect(wrapper.emitted().onInputButtonClick).toHaveLength(1);
+  });
+});
