@@ -59,7 +59,7 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      default: '',
+      required: true,
       validator: (value: string) => {
         return ['text', 'number', 'email', 'password', 'search', 'tel', 'textarea'].includes(value);
       },
