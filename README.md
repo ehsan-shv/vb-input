@@ -1,35 +1,55 @@
-# vue-base-input
+# vb-input
 
-## Project setup
+<a href="https://www.npmjs.com/package/vb-input"><img src="https://img.shields.io/npm/v/vb-input.svg" alt="Version"></a>
 
-```
-npm install
-```
+**Vue 3 input component.**
 
-### Compiles and hot-reloads for development
+> Support Vue3 and Nuxt3 and type-safe.
 
-```
-npm run serve
-```
+## Documentation
 
-### Compiles and minifies for production
+Check out docs at [docs](https://ehsan-shv.github.io/vb-input-docs/).
 
-```
-npm run build
-```
+## Types
 
-### Run your unit tests
+- text
+- number
+- password
+- tel
+- email
+- search
+- textarea
 
-```
-npm run test:unit
-```
-
-### Lints and fixes files
+## Installation
 
 ```
-npm run lint
+npm i vb-input
 ```
 
-### Customize configuration
+## Import to component
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+<template>
+  <VBInput
+    :type="'text'"
+    placeholder="name"
+    label="Your Name"
+    v-model="name"
+  />
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import VBInput from 'vb-input';
+export default defineComponent({
+  components: {
+    VBInput,
+  },
+  setup() {
+    const name = ref('');
+
+    return { name };
+  },
+});
+</script>
+```
