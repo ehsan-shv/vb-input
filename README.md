@@ -22,13 +22,13 @@ Check out docs at [docs](https://ehsan-shv.github.io/vb-input-docs/).
 
 ## Installation
 
-```
+```bash
 npm i vb-input
 ```
 
 ## Import to component
 
-```
+```js
 <template>
   <VBInput
     :type="'text'"
