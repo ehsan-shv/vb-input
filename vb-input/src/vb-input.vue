@@ -222,7 +222,7 @@ export default defineComponent({
       border-color: var(--vb-input-color-default);
     }
 
-    &[type='textarea'] {
+    textarea.vb-input__field {
       height: var(--vb-input-textarea-height);
       padding-top: 8px;
       padding-bottom: 8px;
