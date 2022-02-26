@@ -59,7 +59,7 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      default: '',
+      required: true,
       validator: (value: string) => {
         return ['text', 'number', 'email', 'password', 'search', 'tel', 'textarea'].includes(value);
       },
@@ -222,7 +222,7 @@ export default defineComponent({
       border-color: var(--vb-input-color-default);
     }
 
-    &[type='textarea'] {
+    textarea.vb-input__field {
       height: var(--vb-input-textarea-height);
       padding-top: 8px;
       padding-bottom: 8px;

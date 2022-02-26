@@ -1,7 +1,19 @@
 {
   "name": "vb-input",
-  "version": "0.0.3",
-  "description": "Vue reuseable input component.",
+  "version": "1.0.1",
+  "author": "Ehsan",
+  "keywords": [
+    "vue",
+    "nuxt",
+    "vue3",
+    "input",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehsan-shv/vb-input.git"
+  },
+  "description": "Vue reuseable input component dor Vue3 and Nuxt3.",
   "main": "dist/vb-input.ssr.js",
   "browser": "dist/vb-input.esm.js",
   "module": "dist/vb-input.esm.js",
@@ -9,7 +21,8 @@
   "types": "dist/types/src/entry.esm.d.ts",
   "files": [
     "dist/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "README.md"
   ],
   "sideEffects": false,
   "scripts": {
