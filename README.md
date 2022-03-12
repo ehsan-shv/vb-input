@@ -28,14 +28,9 @@ npm i vb-input
 
 ## Import to component
 
-```js
+```vue
 <template>
-  <VBInput
-    :type="'text'"
-    placeholder="name"
-    label="Your Name"
-    v-model="name"
-  />
+  <VBInput :type="'text'" placeholder="name" label="Your Name" v-model="name" />
 </template>
 
 <script lang="ts">
