@@ -22,20 +22,15 @@ Check out docs at [docs](https://ehsan-shv.github.io/vb-input-docs/).
 
 ## Installation
 
-```
+```bash
 npm i vb-input
 ```
 
 ## Import to component
 
-```
+```vue
 <template>
-  <VBInput
-    :type="'text'"
-    placeholder="name"
-    label="Your Name"
-    v-model="name"
-  />
+  <VBInput :type="'text'" placeholder="name" label="Your Name" v-model="name" />
 </template>
 
 <script lang="ts">
